@@ -4,21 +4,20 @@ use Illuminate\Support\Str;
 
 return [
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'mongodb'),
 
     'connections' => [
-'mongodb' => [
-    'driver'   => 'mongodb',
-    'dsn'      => env('DB_DSN'),  // Usar la URI completa aquí
-    'database' => env('DB_DATABASE'),
-    'username' => env('DB_USERNAME'),
-    'password' => env('DB_PASSWORD'),
-    'options'  => [
-        'authSource' => 'admin',  // Dependiendo de tu configuración de MongoDB
-        'ssl'        => true,
-    ],
-],
-
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'dsn'      => env('DB_DSN'),  // Usar la URI completa aquí
+            'database' => env('DB_DATABASE'),
+            'username' => env('DB_USERNAME'),
+            'password' => env('DB_PASSWORD'),
+            'options'  => [
+                'authSource' => 'admin',  // Dependiendo de tu configuración de MongoDB
+                'ssl'        => true,
+            ],
+        ],
 
         // Otras conexiones...
 
