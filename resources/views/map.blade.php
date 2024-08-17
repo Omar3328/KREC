@@ -64,6 +64,6 @@
     </script>
 
     <!-- Cargar la API de Google Maps con la clave de API y llamar a initMap() al cargar -->
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHklZG_xqMvNS0RZLROteooMtl5u9RQQA&callback=initMap" async defer></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBvH_wBR9wEOXm4r39boQ8oAV6q_9QlMSc&callback=initMap" async defer></script>
 </body>
 </html>

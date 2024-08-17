@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\AuthController; // Importa el controlador
 
 Route::get('/', function () {
     return view('home'); // Crea esta vista si es necesario
@@ -27,9 +26,29 @@ Route::get('/contacto', function () {
     return view('contacto');
 });
 
-// Rutas para autenticación
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login.form');
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/login', function () {
+    return view('login');
+});
+use App\Http\Controllers\AuthController;
 
-Route::get('/register', [AuthController::class, 'showRegisterForm'])->name('register.form');
-Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/about', function () {
+    return view('about'); // Asegúrate de tener una vista llamada 'about.blade.php' en la carpeta 'resources/views'
+})->name('about');
+
+// Rutas para autenticación
+Route::get('login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('login', [AuthController::class, 'login']);
+Route::get('register', [AuthController::class, 'showRegistrationForm'])->name('register');
+Route::post('register', [AuthController::class, 'register']);
+use App\Http\Controllers\AdminUserController;
+
+Route::middleware('auth')->group(function () {
+    Route::get('admin/crud', [AdminUserController::class, 'index'])->name('admin.crud');
+    Route::get('admin/crud/create', [AdminUserController::class, 'create'])->name('admin.users.create');
+    Route::post('admin/crud', [AdminUserController::class, 'store'])->name('admin.users.store');
+    Route::get('admin/crud/{id}/edit', [AdminUserController::class, 'edit'])->name('admin.users.edit');
+    Route::put('admin/crud/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
+    Route::delete('admin/crud/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
+});
+
+

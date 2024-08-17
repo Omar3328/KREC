@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Comprar - KREC</title>
     <link rel="stylesheet" href="{{ asset('css/principal.css') }}">
-    <script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -28,29 +27,6 @@
         <h1>Comprar</h1>
         <p>Aquí puedes comprar el collar inteligente KREC...</p>
         <!-- Agrega información sobre cómo comprar -->
-
-        <!-- Botón de PayPal -->
-        <div id="paypal-button-container"></div>
-
-        <script>
-            paypal.Buttons({
-                createOrder: function(data, actions) {
-                    return actions.order.create({
-                        purchase_units: [{
-                            amount: {
-                                value: '10.00' // Monto del producto
-                            }
-                        }]
-                    });
-                },
-                approveOrder: function(data, actions) {
-                    return actions.order.capture().then(function(details) {
-                        alert('Transaction completed by ' + details.payer.name.given_name);
-                        // Aquí puedes agregar lógica para mostrar un mensaje de éxito o redirigir al usuario
-                    });
-                }
-            }).render('#paypal-button-container');
-        </script>
     </div>
 </body>
 </html>
