@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  web:
+    image: php:8.1-fpm
+    container_name: laravel-web
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "80:80"
+    working_dir: /var/www/html
+    command: ["php-fpm"]
+
+  # Opcional: Si necesitas un servidor web como Nginx
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    depends_on:
+      - web
+
+  # Si necesitas otras dependencias, como Redis o que usen los mismos datos
+  redis:
+    image: redis:alpine
+    container_name: redis
+
+volumes:
+  db_data:
