@@ -16,10 +16,10 @@ services:
     image: nginx:alpine
     container_name: nginx
     ports:
-      - "10000:80"  # Mapea el puerto 80 del contenedor al puerto 10000 en la máquina host, que Render espera
+      - "10000:80"  # Mapea el puerto 80 del contenedor al puerto 10000 en la máquina host
     volumes:
       - .:/var/www/html
-      - ./nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx.conf:/nginx.conf
     depends_on:
       - web
 
@@ -32,5 +32,6 @@ services:
     image: redis:alpine
     container_name: redis
 
-volumes:
-  db_data:
+networks:
+  default:
+    driver: bridge
