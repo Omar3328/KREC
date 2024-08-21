@@ -1,11 +1,9 @@
 services:
   - type: web
-    name: my-laravel-app
-    env: docker
-    dockerfile: Dockerfile
-    port: 9000
-    buildCommand: ""
-    startCommand: "php-fpm"
-    healthCheckPath: "/"
-    healthCheckInterval: 30s
-    healthCheckTimeout: 10s
+    name: KREC
+    env: php
+    buildCommand: "composer install --no-dev --optimize-autoloader"
+    startCommand: "php artisan serve --host 0.0.0.0 --port 10000"
+    plan: free
+    ports:
+      - 10000

@@ -1,28 +1,28 @@
-# Usa una imagen base de PHP
+# Usa la imagen oficial de PHP
 FROM php:8.1-fpm
 
-# Instala dependencias del sistema y extensiones de PHP necesarias
-RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libfreetype6-dev libjpeg62-turbo-dev \
-    libgmp-dev libicu-dev libzip-dev unzip git libonig-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd mysqli pdo pdo_mysql zip intl bcmath \
-    && docker-php-ext-enable opcache
+# Instala dependencias
+RUN apt-get update && apt-get install -y libpng-dev libjpeg-dev libfreetype6-dev libonig-dev libxml2-dev git unzip
 
-# Instala Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Instala extensiones de PHP
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install gd
 
 # Configura el directorio de trabajo
-WORKDIR /var/www/html
+WORKDIR /var/www
 
-# Copia el contenido del proyecto al contenedor
+# Copia los archivos del proyecto
 COPY . .
 
-# Instala las dependencias de Composer
+# Instala Composer
+RUN curl -sS https://getcomposer.org/installer | php \
+    && mv composer.phar /usr/local/bin/composer
+
+# Instala las dependencias de PHP
 RUN composer install --no-dev --optimize-autoloader
 
-# Expone el puerto 9000 para PHP-FPM
-EXPOSE 9000
+# Expone el puerto en el que Laravel escuchará
+EXPOSE 10000
 
-# Inicia el servidor PHP-FPM
-CMD ["php-fpm"]
+# Comando para iniciar la aplicación
+CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=10000"]
