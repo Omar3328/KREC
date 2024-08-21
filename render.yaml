@@ -1,9 +1,15 @@
 services:
   - type: web
     name: my-laravel-app
-    env: php
-    buildCommand: "composer install --no-dev --optimize-autoloader"
-    startCommand: "php artisan serve --host 0.0.0.0 --port 10000"
-    plan: free
-    ports:
-      - 10000
+    env: docker
+    build:
+      dockerfile: Dockerfile
+    port: 80
+    healthCheckPath: /health
+    plan: starter
+    autoDeploy: true
+    branch: main
+    routes:
+      - type: http
+        name: my-laravel-app
+        domain: your-custom-domain.com  # Cambia esto si tienes un dominio personalizado
