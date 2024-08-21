@@ -1,34 +1,14 @@
 version: '3.8'
 
 services:
-  app:
+  web:
     build:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "9000:9000"
-    volumes:
-      - .:/var/www/html
-    environment:
-      - DB_CONNECTION=mongodb
-      - DB_HOST=mongodb
-      - DB_PORT=27017
-      - DB_DATABASE=Registro
-      - DB_USERNAME=Cesar2004
-      - DB_PASSWORD=Omar2004
-
-  mongodb:
-    image: mongo:latest
-    ports:
-      - "27017:27017"
-
-  web:
-    image: php:8.1-fpm
-    container_name: laravel-web
-    volumes:
-      - .:/var/www/html
-    ports:
       - "80:80"
+    volumes:
+      - .:/var/www/html
     working_dir: /var/www/html
     command: ["php-fpm"]
 
@@ -42,6 +22,11 @@ services:
       - ./nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - web
+
+  mongodb:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
 
   redis:
     image: redis:alpine
