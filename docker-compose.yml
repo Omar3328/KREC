@@ -16,7 +16,7 @@ services:
     image: nginx:alpine
     container_name: nginx
     ports:
-      - "80:80"  # Cambiado a 80 para que coincida con la configuración de Nginx
+      - "10000:80"  # Mapea el puerto 80 del contenedor al puerto 10000 en la máquina host, que Render espera
     volumes:
       - .:/var/www/html
       - ./nginx.conf:/etc/nginx/nginx.conf
