@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-      - "8080:80"  # Cambia el puerto local a 8080
+    - "10000:80"  # Cambiado para coincidir con el puerto esperado por Render
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
