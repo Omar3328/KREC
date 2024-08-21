@@ -10,7 +10,7 @@ COPY . /var/www/html
 # Configura el directorio de trabajo
 WORKDIR /var/www/html
 
-# Expone el puerto 9000 para PHP-FPM
+# Expon el puerto 9000 para PHP-FPM
 EXPOSE 9000
 
 # Inicia PHP-FPM

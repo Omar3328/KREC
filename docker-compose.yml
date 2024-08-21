@@ -5,12 +5,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    ports:
-      - "10000:80"  # Cambiado para coincidir con el puerto esperado por Render
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
     command: ["php-fpm"]
+    expose:
+      - "9000"
 
   nginx:
     image: nginx:alpine
