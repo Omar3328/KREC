@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,71 +15,87 @@
             height: 100vh;
             margin: 0;
         }
+
         .container {
             background-color: #fff;
-            padding: 30px;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 100%;
-            max-width: 400px;
+            padding: 40px;
+            border-radius: 12px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            width: 90%;
+            max-width: 360px;
             text-align: center;
         }
+
         h1 {
-            margin-bottom: 20px;
+            margin-bottom: 24px;
             color: #333;
-            font-size: 2em;
+            font-size: 2.2em;
             background: linear-gradient(45deg, #2196F3, #1976D2);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            display: inline;
         }
+
         label {
             display: block;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             color: #555;
+            font-size: 0.9em;
+            text-align: left;
         }
+
         input {
-            width: calc(100% - 22px);
-            padding: 12px;
-            margin-bottom: 15px;
+            width: 100%;
+            padding: 14px;
+            margin-bottom: 18px;
             border: 1px solid #ddd;
-            border-radius: 5px;
+            border-radius: 6px;
             box-sizing: border-box;
+            font-size: 0.9em;
         }
+
         button {
             width: 100%;
-            padding: 12px;
+            padding: 14px;
             background-color: #2196F3;
             color: #fff;
             border: none;
-            border-radius: 5px;
+            border-radius: 6px;
             cursor: pointer;
             font-size: 1em;
+            transition: background-color 0.3s ease;
         }
+
         button:hover {
             background-color: #1976D2;
         }
+
         .errors {
             margin-top: 20px;
-            padding: 10px;
+            padding: 12px;
             background-color: #f8d7da;
             border: 1px solid #f5c6cb;
-            border-radius: 5px;
+            border-radius: 6px;
             color: #721c24;
+            font-size: 0.9em;
         }
+
         .register-link {
             margin-top: 20px;
             font-size: 0.9em;
         }
+
         .register-link a {
-            color: #2196F3;
+            color: #1976D2;
             text-decoration: none;
+            font-weight: bold;
         }
+
         .register-link a:hover {
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <h1>KREC Inicio de Sesión</h1>
@@ -105,4 +122,5 @@
         </div>
     </div>
 </body>
+
 </html>

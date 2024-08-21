@@ -50,5 +50,12 @@ Route::middleware('auth')->group(function () {
     Route::put('admin/crud/{id}', [AdminUserController::class, 'update'])->name('admin.users.update');
     Route::delete('admin/crud/{id}', [AdminUserController::class, 'destroy'])->name('admin.users.destroy');
 });
+// routes/web.php
+
+use App\Http\Controllers\UserController;
+
+Route::get('/create-user', [UserController::class, 'createUser']);
+
+
 
 

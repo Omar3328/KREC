@@ -13,6 +13,13 @@ class User extends Eloquent implements Authenticatable
     protected $connection = 'mongodb';
     protected $collection = 'users';
 
-// En tu modelo de User
-protected $fillable = ['name', 'email', 'password', 'role'];
+    protected $fillable = [
+        'name',
+        'apellido_paterno',
+        'apellido_materno',
+        'edad',
+        'email',
+        'password',
+        'role'
+    ];
 }

@@ -22,7 +22,6 @@
             <a href="{{ url('about') }}">¿Qué somos?</a>
             <a href="{{ url('yt') }}">Visual</a>
             <a href="{{ url('map') }}">Nuestra ubicación</a>
-            <a href="{{ url('compra') }}">Comprar</a>
             <a href="{{ url('contacto') }}">Contáctanos</a>
         </div>
         <div class="botones-derecha">

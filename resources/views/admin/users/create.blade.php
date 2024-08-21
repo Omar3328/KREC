@@ -2,9 +2,7 @@
 
 @section('content')
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    /* Estilos personalizados */
     .container {
         max-width: 600px;
         margin: auto;
@@ -28,11 +26,6 @@
         border: 1px solid #ced4da;
         padding: 10px;
         font-size: 16px;
-        transition: border-color 0.3s;
-    }
-    .form-control:focus {
-        border-color: #80bdff;
-        box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
     }
     .btn-success {
         background-color: #28a745;
@@ -46,9 +39,6 @@
     .btn-success:hover {
         background-color: #218838;
     }
-    .btn-success:focus, .btn-success:active {
-        box-shadow: none;
-    }
 </style>
 
 <div class="container">
@@ -58,6 +48,18 @@
         <div class="form-group">
             <label for="name">Nombre</label>
             <input type="text" name="name" id="name" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido_paterno">Apellido Paterno</label>
+            <input type="text" name="apellido_paterno" id="apellido_paterno" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="apellido_materno">Apellido Materno</label>
+            <input type="text" name="apellido_materno" id="apellido_materno" class="form-control" required>
+        </div>
+        <div class="form-group">
+            <label for="edad">Edad</label>
+            <input type="number" name="edad" id="edad" class="form-control" required>
         </div>
         <div class="form-group">
             <label for="email">Correo Electrónico</label>

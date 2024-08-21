@@ -1,0 +1,24 @@
+<?php
+namespace App\Http\Controllers;
+
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Http\Request;
+
+class UserController extends Controller
+{
+    public function insertManualUser()
+    {
+        $user = User::create([
+            'name' => 'Juan',
+            'apellido_paterno' => 'Pérez',
+            'apellido_materno' => 'Gómez',
+            'edad' => 25,
+            'email' => 'juan.perez@example.com',
+            'password' => ('password123'),
+            'role' => 'admin' // O 'admin', dependiendo del rol
+        ]);
+
+        return response()->json(['message' => 'Usuario creado exitosamente', 'user' => $user]);
+    }
+}

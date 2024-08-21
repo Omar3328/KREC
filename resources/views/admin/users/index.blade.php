@@ -2,13 +2,24 @@
 
 @section('content')
 <style>
-    body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    /* Estilos personalizados */
+    .container {
+        max-width: 1200px;
+        margin: auto;
+    }
+    h1 {
+        text-align: center;
+        margin-bottom: 30px;
+        color: #343a40;
     }
     .btn-primary {
         background-color: #007bff;
         border: none;
         border-radius: 5px;
+        color: #fff;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
     }
     .btn-primary:hover {
         background-color: #0056b3;
@@ -49,22 +60,22 @@
     .table tr:hover {
         background-color: #e9ecef;
     }
-    .container {
-        max-width: 1200px;
-        margin: auto;
-    }
     .btn-group {
         display: flex;
         gap: 10px;
     }
 </style>
+
 <div class="container">
-    <h1 class="mb-4">Usuarios</h1>
+    <h1>Usuarios</h1>
     <a href="{{ route('admin.users.create') }}" class="btn btn-primary">Crear Usuario</a>
     <table class="table mt-4">
         <thead>
             <tr>
                 <th>Nombre</th>
+                <th>Apellido Paterno</th>
+                <th>Apellido Materno</th>
+                <th>Edad</th>
                 <th>Email</th>
                 <th>Rol</th>
                 <th>Acciones</th>
@@ -74,8 +85,11 @@
             @foreach($users as $user)
                 <tr>
                     <td>{{ $user->name }}</td>
+                    <td>{{ $user->apellido_paterno }}</td>
+                    <td>{{ $user->apellido_materno }}</td>
+                    <td>{{ $user->edad }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>{{ $user->role }}</td>
+                    <td>{{ ucfirst($user->role) }}</td>
                     <td>
                         <div class="btn-group">
                             <a href="{{ route('admin.users.edit', $user->_id) }}" class="btn btn-warning">Editar</a>
