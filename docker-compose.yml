@@ -6,7 +6,7 @@ services:
       context: .
       dockerfile: Dockerfile
     ports:
-    - "10000:80"  # Cambiado para coincidir con el puerto esperado por Render
+      - "10000:80"  # Cambiado para coincidir con el puerto esperado por Render
     volumes:
       - .:/var/www/html
     working_dir: /var/www/html
@@ -16,7 +16,7 @@ services:
     image: nginx:alpine
     container_name: nginx
     ports:
-      - "8080:80"  # Cambia el puerto local a 8080
+      - "80:80"  # Cambiado a 80 para que coincida con la configuración de Nginx
     volumes:
       - .:/var/www/html
       - ./nginx.conf:/etc/nginx/nginx.conf
