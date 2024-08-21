@@ -1,29 +1,17 @@
-# Usar la imagen base de PHP
+# Usa una imagen base de PHP con PHP-FPM
 FROM php:8.1-fpm
 
-# Instalar extensiones y dependencias
-RUN apt-get update && apt-get install -y \
-    libpng-dev libjpeg-dev libfreetype6-dev libzip-dev git unzip \
-    libssl-dev \
-    && docker-php-ext-configure gd --with-freetype --with-jpeg \
-    && docker-php-ext-install gd zip \
-    && pecl install xdebug mongodb \
-    && docker-php-ext-enable xdebug mongodb
+# Instala las extensiones necesarias
+RUN docker-php-ext-install pdo pdo_mysql
 
-# Instalar Composer
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
+# Copia el código de tu aplicación al contenedor
+COPY . /var/www/html
 
-# Establecer el directorio de trabajo
+# Configura el directorio de trabajo
 WORKDIR /var/www/html
 
-# Copiar archivos del proyecto
-COPY . .
+# Expone el puerto 9000 para PHP-FPM
+EXPOSE 9000
 
-# Instalar dependencias de PHP
-RUN composer install --no-dev --optimize-autoloader
-
-# Exponer el puerto 80
-EXPOSE 80
-
-# Ejecutar el servidor de PHP
+# Inicia PHP-FPM
 CMD ["php-fpm"]
